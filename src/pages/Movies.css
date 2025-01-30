@@ -1,0 +1,37 @@
+.search-container {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: #495057;
+}
+
+.search-container input {
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.search-input:focus {
+    border-color: #495057;
+    outline: none;
+}
+
+.pagination-controls {
+    margin-top: 20px;
+    margin-bottom: 30px; /* Adds space after the pagination */
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-controls button {
+    padding: 10px 20px;
+    margin: 0 10px;
+}
+
+.pagination-controls span {
+    font-size: 1.1rem;
+    color: white;
+}
+
+

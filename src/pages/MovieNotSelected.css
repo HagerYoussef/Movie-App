@@ -1,0 +1,36 @@
+/* MovieNotSelected.css */
+.movie-not-selected-container {
+    padding: 50px;
+    background-color: #f8d7da; /* Soft red background for the error message */
+    border: 1px solid #f5c6cb; /* Light red border */
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+    .movie-not-selected-container h1 {
+    color: #dc3545; /* Red color for the error title */
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    }
+
+    .movie-not-selected-container p {
+    font-size: 1.2rem;
+    color: #721c24; /* Darker red color for the text */
+    }
+
+    .movie-not-selected-container a {
+    color: #6c757d;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 1.1rem;
+    }
+
+    .movie-not-selected-container a:hover {
+    color: #495057;
+    text-decoration: underline;
+    }

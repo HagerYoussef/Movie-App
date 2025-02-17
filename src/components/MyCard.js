@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { toggleFavoriteAction } from '../Redux/Actions/AddToFavorite';
-
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 function MyCard({
     id,
     original_title,
@@ -17,13 +18,13 @@ function MyCard({
     const dispatch = useDispatch();
     const favoriteMovies = useSelector((state) => state.favorites.favoriteMovies || []);
     const isFavorite = favoriteMovies.some((movie) => movie.id === id);  // Check if the movie is in favorites
-
+    const { theme } = useContext(ThemeContext);
     const handleFavoriteToggle = () => {
         dispatch(toggleFavoriteAction({ id, original_title, poster_path, vote_average }));
     };
 
     return (
-        <div className="card" style={{ width: '28rem', margin: '0.5rem' }}>
+        <div className={`card ${theme}`} style={{ width: '28rem', margin: '0.5rem' }}>
             <img
                 src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 className="card-img-top"
@@ -50,7 +51,7 @@ function MyCard({
 
                 {showDetailsButton && !isDetailsPage && (
                     <Link to={`/movie/${id}`}>
-                        <button className="btn btn-light text-secondary">More Details</button>
+                        <button className={`btn ${theme === "dark" ? "btn-dark text-light" : "btn-light text-dark"}`}>More Details</button>
                     </Link>
                 )}
             </div>

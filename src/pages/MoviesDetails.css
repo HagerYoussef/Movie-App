@@ -1,7 +1,18 @@
 .details-page {
     display: flex;
-    justify-content: center; /* Center the card horizontally */
-    align-items: center;     /* Center the card vertically */
-    min-height: 100vh;       /* Ensure full viewport height */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
+}
+
+/* Apply theme to background */
+body.light .details-page {
+    background-color: white;
+    color: black;
+}
+
+body.dark .details-page {
+    background-color: #121212;
+    color: white;
 }

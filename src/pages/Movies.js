@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MyCard from '../components/MyCard';
 import '../components/MyCard.css';
+import { LanguageContext } from '../context/languageContext';
 
 function Movies() {
     const [movies, setMovies] = useState([]);
@@ -11,21 +12,26 @@ function Movies() {
     const [filteredMovies, setFilteredMovies] = useState([]); // Track filtered movies
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [totalPages, setTotalPages] = useState(0);  // Track total pages
+    const { language } = useContext(LanguageContext);
 
     useEffect(() => {
-        axios
-            .get(`https://api.themoviedb.org/3/movie/popular?api_key=1c61f7854caf371b34a23ef611f0efed&page=${currentPage}`)
-            .then((response) => {
-                setMovies(response.data.results);
-                setFilteredMovies(response.data.results); // Initialize filteredMovies
-                setTotalPages(response.data.total_pages);
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError('Failed to load movies. Please try again later.');
-                setLoading(false);
-            });
-    }, [currentPage]); // Fetch new movies whenever currentPage changes
+    setLoading(true); // Show loading when fetching new data
+
+    axios
+        .get(`https://api.themoviedb.org/3/movie/popular?api_key=1c61f7854caf371b34a23ef611f0efed&language=${language}&page=${currentPage}`)
+        .then((response) => {
+            setMovies(response.data.results);
+            setFilteredMovies(response.data.results); // Initialize filteredMovies
+            setTotalPages(response.data.total_pages);
+        })
+        .catch((error) => {
+            setError('Failed to load movies. Please try again later.');
+        })
+        .finally(() => {
+            setLoading(false);
+        });
+
+}, [currentPage, language]); // Fetch new movies whenever currentPage changes
 
     const handlePageChange = (page) => {
         if (page >= 1 && page <= totalPages) {

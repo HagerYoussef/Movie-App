@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+/* Dark Theme */
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.navbar.dark {
+  background-color: #1e1e1e !important;
+}
+
+.card.dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+}
+
+.btn.dark {
+  background-color: #333;
+  color: #ffffff;
+  border: 1px solid #555;
+}
+
+.form-control.dark {
+  background-color: #333;
+  color: #ffffff;
+  border: 1px solid #555;
+}

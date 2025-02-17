@@ -8,10 +8,13 @@ import Movies from './pages/Movies';
 import MovieDetails from './pages/MoviesDetails';
 import MovieNotSelected from './pages/MovieNotSelected';
 import Favorites from './pages/Favorites';
+import { useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 
 function App() {
+  const { theme } = useContext(ThemeContext);
   return (
-    <div>
+    <div className={theme === 'dark' ? 'dark' : 'light'}>
       <BrowserRouter>
         <Navbar />
         <Switch>

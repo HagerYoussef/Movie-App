@@ -1,19 +1,28 @@
-/* Styles for the movie list */
 .movie-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Display 3 cards per row */
-    gap: 20px; /* Add space between the cards */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding: 20px;
 }
 
 /* Style for each card */
 .card {
-    background-color: #333;
-    color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding-top: 0%;
+}
+
+/* Apply theme to cards */
+body.light .card {
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+}
+
+body.dark .card {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
 }
 
 .card img {
@@ -44,23 +53,66 @@
 
 /* Style for the heart icon */
 .card-footer .heart-icon {
-    font-size: 2rem;  /* Make the heart icon bigger */
+    font-size: 2rem;
     cursor: pointer;
-    color: #f00; /* Red color */
     transition: transform 0.3s ease;
 }
 
-.card-footer .heart-icon:hover {
-    transform: scale(1.2); /* Slightly increase size on hover */
+body.light .card-footer .heart-icon {
+    color: red;
 }
+
+body.dark .card-footer .heart-icon {
+    color: #ff4d4d;
+}
+
+.card-footer .heart-icon:hover {
+    transform: scale(1.2);
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark {
+    background-color: white;
+    color: white;
+}
+
+.btn-dark:hover {
+    background-color: #23272b;
+}
+
+.btn-light {
+    background-color: #343a40;
+    color: black;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+}
+
+.text-light {
+    color: #343a40 !important;
+}
+
+.text-dark {
+    color: white !important;
+}
+
 @media (max-width: 1200px) {
     .movie-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row for smaller screens */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .movie-list {
-        grid-template-columns: 1fr; /* 1 card per row for mobile devices */
+        grid-template-columns: 1fr;
     }
 }
